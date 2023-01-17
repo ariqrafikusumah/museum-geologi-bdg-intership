@@ -171,7 +171,7 @@ export function Home() {
         </Card>
       </div>
 
-      <div className="mb-12 grid gap-y-10 gap-x-6 md:grid-cols-2 xl:grid-cols-3">
+      <div className="mb-12 grid gap-y-10 gap-x-3 md:grid-cols-2 xl:grid-cols-3">
         <Card>
           <CardBody>
             <CardHeader
@@ -256,8 +256,8 @@ export function Home() {
 
       </div>
 
-      <div className="mb-4 grid grid-cols-1 gap-6 xl:grid-cols-3">
-        {/* <Card className="overflow-hidden xl:col-span-2">
+      {/* <div className="mb-4 grid grid-cols-1 gap-6 xl:grid-cols-3">
+        <Card className="overflow-hidden xl:col-span-2">
           <CardHeader
             floated={false}
             shadow={false}
@@ -440,9 +440,8 @@ export function Home() {
               )
             )}
           </CardBody>
-        </Card> */}
-
-      </div>
+        </Card>
+      </div> */}
       <Card >
         <CardHeader variant="gradient" color="blue" className="mb-8 p-6">
           <Typography variant="h6" color="white">

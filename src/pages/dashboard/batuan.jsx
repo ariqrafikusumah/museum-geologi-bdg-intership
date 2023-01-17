@@ -13,11 +13,12 @@ import {
     Checkbox,
 } from "@material-tailwind/react";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 export function Batuan() {
     const url = "https://sbc-sebatcabut.herokuapp.com";
     const [formData, setFormData] = useState({
-        id: "639ac7f63153ff7083d5b797",
+        id: null,
         no_register: "MGB-00002938",
         no_inventaris: "BSE00000001",
         kode_bmn: "6.06.01.05.005",
@@ -62,7 +63,7 @@ export function Batuan() {
     const validate = () => {
         const newErrors = {};
         if (!formData.nup_bmn) {
-            newErrors.nup_bmn = "NUP BMN is required", alert('NUP BMN is required');
+            newErrors.nup_bmn = "NUP BMN is required";
         }
         return newErrors;
     }
@@ -70,11 +71,27 @@ export function Batuan() {
     const handleSubmit = event => {
         event.preventDefault();
         const newErrors = validate();
+        // Show SweetAlert2 confirm dialog
+        const result = Swal.fire({
+            title: 'Are you sure?',
+            text: "You want to post this data?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, post it!'
+        });
         if (Object.keys(newErrors).length > 0) {
             setErrors(newErrors);
-        } else {
+        } else (result); {
             axios.post(url + '/batuan', formData)
                 .then(res => {
+                    // Show success message
+                    Swal.fire(
+                        'Success!',
+                        'Your data has been posted.',
+                        'success'
+                    )
                     console.log(res);
                     console.log(res.data);
                 })
@@ -264,8 +281,8 @@ export function Batuan() {
                                 Ruang Penyimpanan
                             </Typography>
                             <div className="grid grid-rows-1 grid-flow-col gap-4">
-                                <Radio id="dalamnegeri" name="ruang_simpan" label="Storage" onChange={handleChange}/>
-                                <Radio id="nonstorage" name="ruang_simpan" label="Non Storage" onChange={handleChange}/>
+                                <Radio id="dalamnegeri" name="ruang_simpan" label="Storage" onChange={handleChange} />
+                                <Radio id="nonstorage" name="ruang_simpan" label="Non Storage" onChange={handleChange} />
                             </div>
                         </div>
                     </CardBody>
@@ -580,7 +597,7 @@ export function Batuan() {
                                 Peta
                             </Typography>
                             <div className="grid grid-rows-2 grid-flow-col gap-4">
-                                <Checkbox id="1" value="Rupa Bumi" label="Rupa Bumi" name="peta" onChange={handleChange}/>
+                                <Checkbox id="1" value="Rupa Bumi" label="Rupa Bumi" name="peta" onChange={handleChange} />
                                 <Checkbox id="2" label="Geologi" />
                                 <Checkbox id="3" label="Blad" />
                                 <Checkbox id="4" label="Luar Negeri" />

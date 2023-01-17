@@ -29,7 +29,8 @@
     "react-leaflet": "^4.2.0",
     "react-router-dom": "^6.4.2",
     "react-tailwindcss-datepicker": "^1.1.2",
-    "stringify": "^5.2.0"
+    "stringify": "^5.2.0",
+    "sweetalert2": "^11.7.0"
   },
   "devDependencies": {
     "@tailwindcss/forms": "^0.5.3",
