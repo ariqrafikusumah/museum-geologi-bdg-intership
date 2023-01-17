@@ -13,7 +13,6 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { FosilTable } from ".";
 import { PencilSquareIcon, PrinterIcon, TrashIcon } from "@heroicons/react/24/solid";
-import BatuanEdit from "./batuanEdit";
 import Swal from 'sweetalert2';
 
 export function Tables() {
