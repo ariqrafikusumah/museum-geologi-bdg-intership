@@ -56,7 +56,7 @@ export const routes = [
         element: <Sumberdayageologi />,
       },
       {
-        path: "/batuanedit/:id",
+        path: "/batuan_edit/:id",
         element: <Batuanedit />,
       },
       {

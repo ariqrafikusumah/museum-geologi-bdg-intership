@@ -7,6 +7,6 @@ export * from "@/pages/dashboard/sumberdayageologi";
 export * from "@/pages/dashboard/fosil";
 export * from "@/pages/dashboard/FosilTabel";
 export * from "@/pages/dashboard/SdgTabel";
-export * from "@/pages/dashboard/batuanedit";
+export * from "@/pages/dashboard/batuan_edit";
 export * from "@/pages/dashboard/fosiledit";
 export * from "@/pages/dashboard/sdgedit";

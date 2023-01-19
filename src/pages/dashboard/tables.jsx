@@ -169,7 +169,7 @@ export function Tables() {
                         <Button className="flex gap-2"><PrinterIcon className="w-5" /> Cetak</Button>
                       </td>
                       <td className="border-b border-blue-gray-50 py-3 px-5 text-left">
-                      <a href={`batuanedit/${item.id}`}><Button className="flex gap-2 bg-blue-gray-900" ><PencilSquareIcon className="w-5" />Edit</Button></a>
+                      <a href={`batuan_edit/${item.id}`}><Button className="flex gap-2 bg-blue-gray-900" ><PencilSquareIcon className="w-5" />Edit</Button></a>
                       </td>
                       <td className="border-b border-blue-gray-50 py-3 px-5 text-left">
                         <Button className="flex gap-2 bg-red-900" onClick={() => handleDelete(item.id)}><TrashIcon className="w-5" value={id} onChange={e => setId(e.target.value)} />Delete</Button>
