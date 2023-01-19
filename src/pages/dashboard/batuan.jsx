@@ -51,11 +51,12 @@ export function Batuan() {
         nilai_buku: "-",
         foto: "test.jpg",
         foto_2: "testB.jpg",
-        foto_3: "testC.jpg"
+        foto_3: "testC.jpg",
     });
 
     const [errors, setErrors] = useState({});
-
+    const [error, setError] = useState('');
+    
     const handleChange = event => {
         setFormData({ ...formData, [event.target.name]: event.target.value });
         setErrors({ ...errors, [event.target.name]: '' });
@@ -68,7 +69,7 @@ export function Batuan() {
         return newErrors;
     }
 
-    const handleSubmit = event => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
         const newErrors = validate();
         // Show SweetAlert2 confirm dialog
@@ -96,6 +97,12 @@ export function Batuan() {
                     console.log(res.data);
                 })
                 .catch(error => {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Something went wrong!',
+                        footer: '<a href>Why do I have this issue?</a>'
+                    })
                     console.log(error);
                 });
         }
@@ -122,8 +129,8 @@ export function Batuan() {
                             </Typography>
                             <Select className="w-full shadow-lg" label="Pilih Kategori BMN" name="kode_bmn" onChange={handleChange} required>
                                 <Option value="6.02.02.99.999">6.02.02.99.999</Option>
-                                <Option>6.06.01.05.005</Option>
-                                <Option>6.06.01.06.001</Option>
+                                <Option value="6.06.01.06.001">6.06.01.06.001</Option>
+                                <Option value="6.06.01.05.005">6.06.01.05.005</Option>
                             </Select>
                         </div>
                     </CardBody>
@@ -224,13 +231,13 @@ export function Batuan() {
                             </Typography>
                             <Select className="shadow-lg" label="Pilih Jenis Koleksi" name="jenis_koleksi" onChange={handleChange}>
                                 <Option value="Beku">Beku</Option>
-                                <Option>Impaktit</Option>
-                                <Option>Mineral</Option>
-                                <Option>Metamorf</Option>
-                                <Option>Meteorit</Option>
-                                <Option>Meteorit</Option>
-                                <Option>Piroklasktik</Option>
-                                <Option>Tidak Terindentifikasi</Option>
+                                <Option value="Impaktit">Impaktit</Option>
+                                <Option value="Mineral">Mineral</Option>
+                                <Option value="Metamorf">Metamorf</Option>
+                                <Option value="Meteorit">Meteorit</Option>
+                                <Option value="Meteorit">Meteorit</Option>
+                                <Option value="Piroklasktik">Piroklasktik</Option>
+                                <Option value="Tidak Terindentifikasi">Tidak Terindentifikasi</Option>
                             </Select>
                         </div>
                     </CardBody>
@@ -297,71 +304,71 @@ export function Batuan() {
                             </Typography>
                             <Select className="shadow-lg" label="Pilih Storage" name="lokasi_simpan" onChange={handleChange}>
                                 <Option value="1">1</Option>
-                                <Option>2</Option>
-                                <Option>3</Option>
-                                <Option>4</Option>
-                                <Option>5</Option>
-                                <Option>6</Option>
-                                <Option>7</Option>
-                                <Option>8</Option>
-                                <Option>9</Option>
-                                <Option>10</Option>
-                                <Option>11</Option>
-                                <Option>12</Option>
-                                <Option>13</Option>
-                                <Option>14</Option>
-                                <Option>15</Option>
+                                <Option value="2">2</Option>
+                                <Option value="3">3</Option>
+                                <Option value="4">4</Option>
+                                <Option value="5">5</Option>
+                                <Option value="6">6</Option>
+                                <Option value="7">7</Option>
+                                <Option value="8">8</Option>
+                                <Option value="9">9</Option>
+                                <Option value="10">10</Option>
+                                <Option value="11">11</Option>
+                                <Option value="12">12</Option>
+                                <Option value="13">13</Option>
+                                <Option value="14">14</Option>
+                                <Option value="15">15</Option>
                             </Select>
                             <Select className="shadow-lg" label="Pilih Lantai">
                                 <Option value="1">1</Option>
-                                <Option>2</Option>
-                                <Option>3</Option>
-                                <Option>4</Option>
-                                <Option>5</Option>
-                                <Option>6</Option>
-                                <Option>7</Option>
-                                <Option>8</Option>
-                                <Option>9</Option>
-                                <Option>10</Option>
-                                <Option>11</Option>
-                                <Option>12</Option>
-                                <Option>13</Option>
-                                <Option>14</Option>
-                                <Option>15</Option>
+                                <Option value="2">2</Option>
+                                <Option value="3">3</Option>
+                                <Option value="4">4</Option>
+                                <Option value="5">5</Option>
+                                <Option value="6">6</Option>
+                                <Option value="7">7</Option>
+                                <Option value="8">8</Option>
+                                <Option value="9">9</Option>
+                                <Option value="10">10</Option>
+                                <Option value="11">11</Option>
+                                <Option value="12">12</Option>
+                                <Option value="13">13</Option>
+                                <Option value="14">14</Option>
+                                <Option value="15">15</Option>
                             </Select>
                             <Select className="shadow-lg" label="Pilih Lajur">
-                                <Option>01</Option>
-                                <Option>02</Option>
-                                <Option>03</Option>
-                                <Option>04</Option>
-                                <Option>05</Option>
-                                <Option>06</Option>
-                                <Option>07</Option>
-                                <Option>08</Option>
-                                <Option>09</Option>
-                                <Option>10</Option>
-                                <Option>11</Option>
-                                <Option>12</Option>
-                                <Option>13</Option>
-                                <Option>14</Option>
-                                <Option>15</Option>
+                                <Option value="1">1</Option>
+                                <Option value="2">2</Option>
+                                <Option value="3">3</Option>
+                                <Option value="4">4</Option>
+                                <Option value="5">5</Option>
+                                <Option value="6">6</Option>
+                                <Option value="7">7</Option>
+                                <Option value="8">8</Option>
+                                <Option value="9">9</Option>
+                                <Option value="10">10</Option>
+                                <Option value="11">11</Option>
+                                <Option value="12">12</Option>
+                                <Option value="13">13</Option>
+                                <Option value="14">14</Option>
+                                <Option value="15">15</Option>
                             </Select>
                             <Select className="shadow-lg" label="Pilih Laci">
-                                <Option>01</Option>
-                                <Option>02</Option>
-                                <Option>03</Option>
-                                <Option>04</Option>
-                                <Option>05</Option>
-                                <Option>06</Option>
-                                <Option>07</Option>
-                                <Option>08</Option>
-                                <Option>09</Option>
-                                <Option>10</Option>
-                                <Option>11</Option>
-                                <Option>12</Option>
-                                <Option>13</Option>
-                                <Option>14</Option>
-                                <Option>15</Option>
+                                <Option value="1">1</Option>
+                                <Option value="2">2</Option>
+                                <Option value="3">3</Option>
+                                <Option value="4">4</Option>
+                                <Option value="5">5</Option>
+                                <Option value="6">6</Option>
+                                <Option value="7">7</Option>
+                                <Option value="8">8</Option>
+                                <Option value="9">9</Option>
+                                <Option value="10">10</Option>
+                                <Option value="11">11</Option>
+                                <Option value="12">12</Option>
+                                <Option value="13">13</Option>
+                                <Option value="14">14</Option>
+                                <Option value="15">15</Option> value="                "
                             </Select>
                             <Input
                                 className=""
@@ -381,8 +388,8 @@ export function Batuan() {
                             </Typography>
                             <Select className="shadow-lg" label="Pilih Jenis Koleksi" name="kondisi" onChange={handleChange}>
                                 <Option value="B - Baik">B - BAIK</Option>
-                                <Option>RR - Rusak Ringan</Option>
-                                <Option>RB - Rusak Berat</Option>
+                                <Option value="RR - Rusak Ringan">RR - Rusak Ringan</Option>
+                                <Option value="RB - Rusak Berat">RB - Rusak Berat</Option>
                             </Select>
                         </div>
                     </CardBody>
@@ -492,9 +499,9 @@ export function Batuan() {
                                 Ditemukan :
                             </Typography>
                             <div className="grid grid-rows-1 grid-flow-col gap-4">
-                                <Radio id="dalamnegeri" name="type" label="Dalam Negeri" />
-                                <Radio id="luarnegeri" name="type" label="Luar Negeri" />
-                                <Radio id="nn" name="type" label="NN" defaultChecked />
+                                <Radio value="dalam negeri" id="dalamnegeri" name="type" label="Dalam Negeri" />
+                                <Radio value="luarnegeri" id="luarnegeri" name="type" label="Luar Negeri" />
+                                <Radio value="nn" id="nn" name="type" label="NN" defaultChecked />
                             </div>
                         </div>
                     </CardBody>
@@ -529,8 +536,8 @@ export function Batuan() {
                             </Select>
                             <Select className="shadow-lg" label="Pilih Kabupaten/Kota" name="lokasi_temuan" onChange={handleChange}>
                                 <Option value="Bandung">Bandung</Option>
-                                <Option>Bekasi</Option>
-                                <Option>Jakarta</Option>
+                                <Option value="Bekasi">Bekasi</Option>
+                                <Option value="Jakarta">Jakarta</Option>
                             </Select>
                             <Typography
                                 className="justify-start w-60 md:md-inset-0"
@@ -598,9 +605,9 @@ export function Batuan() {
                             </Typography>
                             <div className="grid grid-rows-2 grid-flow-col gap-4">
                                 <Checkbox id="1" value="Rupa Bumi" label="Rupa Bumi" name="peta" onChange={handleChange} />
-                                <Checkbox id="2" label="Geologi" />
-                                <Checkbox id="3" label="Blad" />
-                                <Checkbox id="4" label="Luar Negeri" />
+                                <Checkbox id="2" value="Geologi" label="Geologi" />
+                                <Checkbox id="3" value="Blad" label="Blad" />
+                                <Checkbox id="4" value="Luar Negeri" label="Luar Negeri" />
                             </div>
                         </div>
                     </CardBody>
@@ -614,9 +621,9 @@ export function Batuan() {
                                 Skala
                             </Typography>
                             <Select className="w-full shadow-lg" label="Pilh Skala Peta" name="skala" onChange={handleChange}>
-                                <Option>1:50.000</Option>
-                                <Option>1:100.000</Option>
-                                <Option>1:250.000</Option>
+                                <Option value="1:50.000">1:50.000</Option>
+                                <Option value="1:100.000">1:100.000</Option>
+                                <Option value="1:250.000">1:250.000</Option>
                             </Select>
                         </div>
                     </CardBody>
@@ -648,9 +655,9 @@ export function Batuan() {
                             </Typography>
                             <Select className="shadow-lg" label="Pilih Cara Perolehan" name="cara_perolehan" onChange={handleChange}>
                                 <Option value="Pembuatan">Pembuatan</Option>
-                                <Option>Pembelian</Option>
-                                <Option>Hibah</Option>
-                                <Option>Penyelidikan Geologi</Option>
+                                <Option value="">Pembelian</Option>
+                                <Option value="">Hibah</Option>
+                                <Option value="">Penyelidikan Geologi</Option>
                             </Select>
                         </div>
                     </CardBody>

@@ -4,17 +4,62 @@ import {
     CardHeader,
     CardBody,
     Typography,
-    Avatar,
     Checkbox,
     Button,
 } from "@material-tailwind/react";
-import { authorsTableData } from "@/data";
 import React, { useEffect, useState } from "react";
+import { PencilSquareIcon, PrinterIcon, TrashIcon } from "@heroicons/react/24/solid";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 
 export function FosilTable() {
 
+    // * =============================================
+    const [id, setId] = useState('');
+    const [error, setError] = useState('');
+    const handleDelete = async (id) => {
+        // Show SweetAlert2 confirm dialog
+        const result = await Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        });
+        if (result.value) {
+            try {
+                const response = await axios.delete(`http://sbc-sebatcabut.herokuapp.com/fosil/${id}`, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                });
+                // Clear input and error message
+                setId('');
+                setError('');
+                // Show success message
+                Swal.fire(
+                    'Deleted!',
+                    'Your file has been deleted.',
+                    'success'
+                )
+
+                console.log(response);
+            } catch (error) {
+                setError(err.message);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Something went wrong!',
+                    footer: '<a href>Why do I have this issue?</a>'
+                })
+                console.error(error);
+            }
+        }
+    };
+    // * =============================================
     const url = "https://sbc-sebatcabut.herokuapp.com";
     const [data, setdata] = useState([]);
     const [isLoading, setisLoading] = useState(false);
@@ -38,6 +83,7 @@ export function FosilTable() {
                 setisLoading(false);
             });
     }, []);
+    // * =============================================
 
 
     if (isLoading)
@@ -65,7 +111,7 @@ export function FosilTable() {
                         <table className="w-full min-w-[640px] table-auto">
                             <thead>
                                 <tr>
-                                    {["NO", "NO REGISTER", "NO INVENTARIS", "NUP BMN", "NAMA KOLEKSI", "KODE KOLEKSI AWAL", "LOKASI PENYIMPANAN", "KETERANGAN", "", ""].map((el) => (
+                                    {["NO", "NO REGISTER", "NO INVENTARIS", "NUP BMN", "NAMA KOLEKSI", "KODE KOLEKSI AWAL", "LOKASI PENYIMPANAN", "KETERANGAN", "CETAK", "EDIT", "DELETE",""].map((el) => (
                                         <th
                                             key={el}
                                             className="border-b border-blue-gray-50 py-3 px-5 text-left"
@@ -105,6 +151,18 @@ export function FosilTable() {
                                             </td>
                                             <td className="border-b border-blue-gray-50 py-3 px-5 text-left">
                                                 {item.keterangan}
+                                            </td>
+                                            <td className="border-b border-blue-gray-50 py-3 px-5 text-left">
+                                                <Button className="flex gap-2"><PrinterIcon className="w-5" /> Cetak</Button>
+                                            </td>
+                                            <td className="border-b border-blue-gray-50 py-3 px-5 text-left">
+                                                <Button className="flex gap-2 bg-blue-gray-900" onClick={() => handleUpdate(item.id)}><PencilSquareIcon className="w-5" />Edit</Button>
+                                            </td>
+                                            <td className="border-b border-blue-gray-50 py-3 px-5 text-left">
+                                                <Button className="flex gap-2 bg-red-900" onClick={() => handleDelete(item.id)}><TrashIcon className="w-5" value={id} onChange={e => setId(e.target.value)} />Delete</Button>
+                                            </td>
+                                            <td className="border-b border-blue-gray-50 py-3 px-5 text-left">
+                                                <Checkbox />
                                             </td>
                                         </tr>
                                     ))}

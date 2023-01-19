@@ -9,37 +9,9 @@ import {
   Button,
   Typography,
 } from "@material-tailwind/react";
-import { useJwt } from "react-jwt";
-import { useEffect, useState } from "react";
+import React from "react";
 
 export function SignIn() {
-
-  //     const [user, setUser] = useState({});
-  //     function handleCallbackResponse(response) {
-  //         console.log("encode jwt id toke:" + response.credential);
-  //         var userObject = jwt_decode(response.credential);
-  //         console.log(userObject)
-  //         setUser(userObject)
-  //         document.getElementById("signInDiv").hidden = true
-  //     }
-
-  //     function handleSignOut(event) {
-  //         setUser({});
-  //         document.getElementById("signInDiv").hidden = false
-
-  //     }
-
-  //     useEffect(() => {
-  //         google.accounts.id.initialize({
-  //             client_id: "1004252359413-5vdssg45vum5bvkuk1ok53c6itbt998f.apps.googleusercontent.com",
-  //             callback: handleCallbackResponse
-  //         });
-  //         google.accounts.id.renderButton(
-  //             document.getElementById("signInDiv"),
-  //             {theme: "outline",size:"large"}
-  //         )
-  //         google.accounts.id.prompt();
-  // },[])
 
   return (
     <>

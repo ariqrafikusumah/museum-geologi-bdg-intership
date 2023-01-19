@@ -4,16 +4,16 @@ import {
   CardHeader,
   CardBody,
   Typography,
-  Avatar,
   Checkbox,
   Button,
 } from "@material-tailwind/react";
-import { authorsTableData } from "@/data";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { FosilTable } from ".";
 import { PencilSquareIcon, PrinterIcon, TrashIcon } from "@heroicons/react/24/solid";
 import Swal from 'sweetalert2';
+import { Link } from "react-router-dom";
+
 
 export function Tables() {
   // * =======================================
@@ -46,7 +46,7 @@ export function Tables() {
           'Your file has been deleted.',
           'success'
         )
-        window.location.reload();
+
         console.log(response);
       } catch (error) {
         setError(err.message);
@@ -65,7 +65,7 @@ export function Tables() {
     try {
       const res = await axios.put(`https://sbc-sebatcabut.herokuapp.com/batuan/${id}`, data);
       // handle successful update
-      console.log(res);
+      console.log(res.data);
     } catch (error) {
       // handle error
       console.log(error);
@@ -112,111 +112,6 @@ export function Tables() {
 
     return (
       <div className="mt-12 mb-8 flex flex-col gap-12">
-        {/* <Card>
-        <CardHeader variant="gradient" color="blue" className="mb-8 p-6">
-          <Typography variant="h6" color="white">
-            Batuan -
-          </Typography>
-        </CardHeader>
-        <CardBody className="overflow-x-scroll px-0 pt-0 pb-2">
-          <table className="w-full min-w-[640px] table-auto" >
-            <thead>
-              <tr>
-                {["NO", "NO REGISTER", "NO INVENTARIS", "NUP BMN", "NAMA KOLEKSI", "KODE KOLEKSI AWAL", "LOKASI PENYIMPANAN", "KETERANGAN", "", ""].map((el) => (
-                  <th
-                    key={el}
-                    className="border-b border-blue-gray-50 py-3 px-5 text-left"
-                  >
-                    <Typography
-                      variant="small"
-                      className="text-[11px] font-bold uppercase text-blue-gray-400"
-                    >
-                      {el}
-                    </Typography>
-                  </th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {authorsTableData.map(
-                ({ no, img, name, email, job, online, date }, key) => {
-                  const className = `py - 3 px - 5 ${
-          key === authorsTableData.length - 1
-          ? ""
-          : "border-b border-blue-gray-50"
-        } `;
-                  return (
-                    <tr key={name}>
-                      <td className={className}>
-                        <Typography
-                          variant="3"
-                        >
-                          {no}
-                        </Typography>
-                      </td>
-                      <td className={className}>
-                        <div className="flex items-center gap-4">
-                          <Avatar src={img} alt={name} size="sm" />
-                          <div>
-                            <Typography
-                              variant="small"
-                              color="blue-gray"
-                              className="font-semibold"
-                            >
-                              {name}
-                            </Typography>
-                            <Typography className="text-xs font-normal text-blue-gray-500">
-                              {email}
-                            </Typography>
-                          </div>
-                        </div>
-                      </td>
-                      <td className={className}>
-                        <Typography className="text-xs font-semibold text-blue-gray-600">
-                          {job[0]}
-                        </Typography>
-                        <Typography className="text-xs font-normal text-blue-gray-500">
-                          {job[1]}
-                        </Typography>
-                      </td>
-                      <td className={className}>
-
-                      </td>
-                      <td className={className}>
-                        <Typography className="text-xs font-semibold text-blue-gray-600">
-                          {date}
-                        </Typography>
-                      </td>
-                      <td className={className}>
-
-                      </td>
-                      <td className={className}>
-
-                      </td>
-                      <td className={className}>
-                        <Button variant="outlined" color="red">Cetak</Button>
-                      </td>
-                      <td className={className}>
-                        <Typography
-                          as="a"
-                          href="#"
-                          className="text-xs font-semibold text-blue-gray-600"
-                        >
-                          Edit
-                        </Typography>
-                      </td>
-                      <td className={className}>
-                        <Checkbox />
-                      </td>
-                    </tr>
-                  );
-                }
-              )}
-            </tbody>
-          </table>
-        </CardBody>
-      </Card> */}
-
         <Card>
           <CardHeader variant="gradient" color="blue" className="mb-8 p-6">
             <Typography variant="h6" color="white">
@@ -227,7 +122,7 @@ export function Tables() {
             <table className="w-full min-w-[640px] table-auto">
               <thead>
                 <tr>
-                  {["NO", "NO REGISTER", "NO INVENTARIS", "NUP BMN", "NAMA KOLEKSI", "KODE KOLEKSI AWAL", "LOKASI PENYIMPANAN", "KETERANGAN", "Cetak", "edit", ""].map((el) => (
+                  {["NO", "NO REGISTER", "NO INVENTARIS", "NUP BMN", "NAMA KOLEKSI", "KODE KOLEKSI AWAL", "LOKASI PENYIMPANAN", "KETERANGAN", "Cetak", "edit", "DELETE", ""].map((el) => (
                     <th
                       key={el}
                       className="border-b border-blue-gray-50 py-3 px-5 text-left"
@@ -276,7 +171,7 @@ export function Tables() {
                         <Button className="flex gap-2"><PrinterIcon className="w-5" /> Cetak</Button>
                       </td>
                       <td className="border-b border-blue-gray-50 py-3 px-5 text-left">
-                        <Button className="flex gap-2 bg-blue-gray-900" onClick={() => handleUpdate(item.id)}><PencilSquareIcon className="w-5" />Edit</Button>
+                      <a href={`batuanedit/${item.id}`}><Button className="flex gap-2 bg-blue-gray-900" ><PencilSquareIcon className="w-5" />Edit</Button></a>
                       </td>
                       <td className="border-b border-blue-gray-50 py-3 px-5 text-left">
                         <Button className="flex gap-2 bg-red-900" onClick={() => handleDelete(item.id)}><TrashIcon className="w-5" value={id} onChange={e => setId(e.target.value)} />Delete</Button>
