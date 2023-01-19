@@ -12,9 +12,7 @@ import { PencilSquareIcon, PrinterIcon, TrashIcon } from "@heroicons/react/24/so
 import axios from "axios";
 import Swal from "sweetalert2";
 
-
 export function FosilTable() {
-
     // * =============================================
     const [id, setId] = useState('');
     const [error, setError] = useState('');
@@ -111,7 +109,7 @@ export function FosilTable() {
                         <table className="w-full min-w-[640px] table-auto">
                             <thead>
                                 <tr>
-                                    {["NO", "NO REGISTER", "NO INVENTARIS", "NUP BMN", "NAMA KOLEKSI", "KODE KOLEKSI AWAL", "LOKASI PENYIMPANAN", "KETERANGAN", "CETAK", "EDIT", "DELETE",""].map((el) => (
+                                    {["NO", "NO REGISTER", "NO INVENTARIS", "NUP BMN", "NAMA KOLEKSI", "KODE KOLEKSI AWAL", "LOKASI PENYIMPANAN", "KETERANGAN", "CETAK", "EDIT", "DELETE", ""].map((el) => (
                                         <th
                                             key={el}
                                             className="border-b border-blue-gray-50 py-3 px-5 text-left"
@@ -156,7 +154,7 @@ export function FosilTable() {
                                                 <Button className="flex gap-2"><PrinterIcon className="w-5" /> Cetak</Button>
                                             </td>
                                             <td className="border-b border-blue-gray-50 py-3 px-5 text-left">
-                                                <Button className="flex gap-2 bg-blue-gray-900" onClick={() => handleUpdate(item.id)}><PencilSquareIcon className="w-5" />Edit</Button>
+                                                <a href={`fosiledit/${item.id}`}><Button className="flex gap-2 bg-blue-gray-900" ><PencilSquareIcon className="w-5" />Edit</Button></a>
                                             </td>
                                             <td className="border-b border-blue-gray-50 py-3 px-5 text-left">
                                                 <Button className="flex gap-2 bg-red-900" onClick={() => handleDelete(item.id)}><TrashIcon className="w-5" value={id} onChange={e => setId(e.target.value)} />Delete</Button>

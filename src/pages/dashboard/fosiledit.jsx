@@ -15,7 +15,7 @@ import {
 import axios from "axios";
 import Swal from "sweetalert2";
 
-export function Fosil() {
+export function Fosiledit() {
     const url = "https://sbc-sebatcabut.herokuapp.com";
     const [formData, setFormData] = useState({
         id: null,
@@ -89,7 +89,7 @@ export function Fosil() {
                         shadow={false}
                         className="lg:w-1/3 w-full">
                         <Typography className="" variant="h3">
-                            Fosil
+                            Fosil - Edit
                         </Typography>
                     </CardHeader>
                     <CardBody>
@@ -844,4 +844,4 @@ export function Fosil() {
     );
 }
 
-export default Fosil;
+export default Fosiledit;

@@ -9,11 +9,9 @@ import {
 } from "@material-tailwind/react";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { FosilTable } from ".";
+import { FosilTable, SdgTabel } from ".";
 import { PencilSquareIcon, PrinterIcon, TrashIcon } from "@heroicons/react/24/solid";
 import Swal from 'sweetalert2';
-import { Link } from "react-router-dom";
-
 
 export function Tables() {
   // * =======================================
@@ -187,7 +185,7 @@ export function Tables() {
         </Card>
 
         <FosilTable />
-
+        <SdgTabel />
       </div>
     );
 }

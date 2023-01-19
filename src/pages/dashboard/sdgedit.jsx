@@ -15,20 +15,47 @@ import {
 import axios from "axios";
 import Swal from "sweetalert2";
 
-export function Fosil() {
+export function Sdgedit() {
     const url = "https://sbc-sebatcabut.herokuapp.com";
     const [formData, setFormData] = useState({
         id: null,
-        no_register: "MGB-00000003",
-        no_inventaris: "FIM00000003",
-        nama_koleksi: "Trigonostoma (Scalptia) atjehense Oostingh",
-        lokasi_temuan: "Lok.365, Peusangan, Atjeh",
-        tahun_perolehan: "1938",
-        determinator: "Oostingh",
-        keterangan: "Label Fosil"
+        no_register: "MGB-00002938",
+        no_inventaris: "BSE00000001",
+        kode_bmn: "6.06.01.05.005",
+        nup_bmn: "0",
+        merk_bmn: "Batuan",
+        satuan: "Buah",
+        kelompok_koleksi: "Batuan",
+        jenis_koleksi: "Sedimen",
+        sub_jenis_koleksi: "-",
+        kode_jenis_koleksi: "BSE",
+        ruang_simpan: "Gudang 3",
+        lokasi_simpan: "31070101",
+        kondisi: "B/Baik",
+        nama_koleksi: "Batugamping",
+        keterangan: "Batuan Sedimen (Klastik)",
+        nama_formasi: "Bojongmanik",
+        lokasi_temuan: "Desa Ujungjaya, Kec. Sumur, Kab. Pandeglang",
+        koordinat: "Lat/Lon: 6� 49' 31.1268\" S, 105� 28' 35.5764\" E",
+        pulau: "Jawa",
+        peta: "Geologi",
+        lembar_peta: "Ujungkulon",
+        skala: "1:100000",
+        cara_perolehan: "Penyelidikan geologi",
+        tahun_perolehan: "2012",
+        kolektor: "mamang garok",
+        kepemilikan: "Museum Geologi Bandung",
+        operator: "Administrator",
+        tanggal_dicatat: "12/12/2022 6:57",
+        nilai_perolehan: "-",
+        nilai_buku: "-",
+        foto: "test.jpg",
+        foto_2: "testB.jpg",
+        foto_3: "testC.jpg"
     });
 
     const [errors, setErrors] = useState({});
+    const [error, setError] = useState('');
 
     const handleChange = event => {
         setFormData({ ...formData, [event.target.name]: event.target.value });
@@ -36,8 +63,8 @@ export function Fosil() {
     }
     const validate = () => {
         const newErrors = {};
-        if (!formData.no_register) {
-            newErrors.no_register = "no_registeris required", alert('no_register is required');
+        if (!formData.nup_bmn) {
+            newErrors.nup_bmn = "NUP BMN is required", alert('NUP BMN is required');
         }
         return newErrors;
     }
@@ -58,7 +85,7 @@ export function Fosil() {
         if (Object.keys(newErrors).length > 0) {
             setErrors(newErrors);
         } else (result); {
-            axios.post(url + '/fosil', formData)
+            axios.post(url + '/sumberdayageologi', formData)
                 .then(res => {
                     // Show success message
                     Swal.fire(
@@ -89,7 +116,7 @@ export function Fosil() {
                         shadow={false}
                         className="lg:w-1/3 w-full">
                         <Typography className="" variant="h3">
-                            Fosil
+                            Sumber Daya Geologi - Edit
                         </Typography>
                     </CardHeader>
                     <CardBody>
@@ -114,14 +141,16 @@ export function Fosil() {
                                 className="justify-start w-60 md:md-inset-0"
                                 variant="h6"
                             >
-                                no_register
+                                NUP BMN
                             </Typography>
                             <div className="w-full">
                                 <Input
-                                    name="no_register"
+                                    label="NUP BMN"
+                                    name="nup_bmn"
+                                    id="nup_bmn"
                                     onChange={handleChange}
                                 />
-
+                                {errors.nup_bmn && <p style={{ color: "red" }}>{errors.nup_bmn}</p>}
                             </div>
                         </div>
                     </CardBody>
@@ -135,9 +164,10 @@ export function Fosil() {
                                 Tipe BMN
                             </Typography>
                             <Input
-                                inChange={handleChange}
+                                name="no_register"
+                                onChange={handleChange}
+                                disabled
                             />
-                            {errors.nup_bmn && <p style={{ color: "red" }}>{errors.nup_bmn}</p>}
                         </div>
                     </CardBody>
 
@@ -147,12 +177,12 @@ export function Fosil() {
                                 className="justify-start w-60 md:md-inset-0"
                                 variant="h6"
                             >
-                                no_inventaris
+                                No Awal
                             </Typography>
                             <Input
                                 name="no_inventaris"
                                 onChange={handleChange}
-                                label="no_inventaris"
+                                label="No Awal"
                             />
                         </div>
                     </CardBody>
@@ -370,7 +400,7 @@ export function Fosil() {
                                 className="justify-start w-60 md:md-inset-0"
                                 variant="h6"
                             >
-                                nama_koleksi
+                                Nama Koleksi
                             </Typography>
                             <Input
                                 className="grid justify-items-start"
@@ -497,7 +527,7 @@ export function Fosil() {
                                 className="justify-start w-60 md:md-inset-0"
                                 variant="h6"
                             >
-                                lokasi_temuan :
+                                Lokasi Temuan :
                             </Typography>
                             <Select className="shadow-lg" label="Pilih Provinsi" name="pulau" onChange={handleChange}>
                                 <Option value="Jawa Barat">Jawa Barat</Option>
@@ -513,13 +543,11 @@ export function Fosil() {
                                 className="justify-start w-60 md:md-inset-0"
                                 variant="h6"
                             >
-                                deteminator :
+                                Alamat Lengkap :
                             </Typography>
                             <Textarea
                                 className="grid justify-items-start"
-                                label="deteminator"
-                                name="deteminator"
-                                onChange={handleChange}
+                                label="Alamat"
                             />
                         </div>
                     </CardBody>
@@ -640,7 +668,7 @@ export function Fosil() {
                                 className="justify-start w-60 md:md-inset-0"
                                 variant="h6"
                             >
-                                tahun_perolehan
+                                Tahun Perolehan
                             </Typography>
                             <Input
                                 className=""
@@ -663,7 +691,7 @@ export function Fosil() {
                             <Input
                                 className="grid justify-items-start"
                                 label="Determinator"
-                                name="deteminator"
+                                name="operator"
                                 onChange={handleChange}
                             />
                         </div>
@@ -844,4 +872,4 @@ export function Fosil() {
     );
 }
 
-export default Fosil;
+export default Sdgedit;

@@ -116,7 +116,7 @@ export function Sumberdayageologi() {
                         shadow={false}
                         className="lg:w-1/3 w-full">
                         <Typography className="" variant="h3">
-                            sumber daya geologi
+                            Sumber Daya Geologi
                         </Typography>
                     </CardHeader>
                     <CardBody>
