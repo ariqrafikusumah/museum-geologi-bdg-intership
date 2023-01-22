@@ -56,7 +56,9 @@ export function Batuan() {
 
     const [errors, setErrors] = useState({});
     const [error, setError] = useState('');
-    
+    const [id, setId] = useState('');
+
+
     const handleChange = event => {
         setFormData({ ...formData, [event.target.name]: event.target.value });
         setErrors({ ...errors, [event.target.name]: '' });
@@ -73,7 +75,7 @@ export function Batuan() {
         event.preventDefault();
         const newErrors = validate();
         // Show SweetAlert2 confirm dialog
-        const result = Swal.fire({
+        const result = await Swal.fire({
             title: 'Are you sure?',
             text: "You want to post this data?",
             icon: 'warning',
@@ -82,11 +84,13 @@ export function Batuan() {
             cancelButtonColor: '#d33',
             confirmButtonText: 'Yes, post it!'
         });
-        if (Object.keys(newErrors).length > 0) {
+        if (result.value, Object.keys(newErrors).length > 0) {
             setErrors(newErrors);
-        } else (result); {
-            axios.post(url + '/batuan', formData)
+        } else {
+            await axios.post(url + '/batuan', formData)
                 .then(res => {
+                    setId('');
+                    setErrors('');
                     // Show success message
                     Swal.fire(
                         'Success!',
@@ -97,6 +101,7 @@ export function Batuan() {
                     console.log(res.data);
                 })
                 .catch(error => {
+                    setError(error.message);
                     Swal.fire({
                         icon: 'error',
                         title: 'Oops...',

@@ -69,11 +69,11 @@ export function Sumberdayageologi() {
         return newErrors;
     }
 
-    const handleSubmit = event => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
         const newErrors = validate();
         // Show SweetAlert2 confirm dialog
-        const result = Swal.fire({
+        const result = await Swal.fire({
             title: 'Are you sure?',
             text: "You want to post this data?",
             icon: 'warning',

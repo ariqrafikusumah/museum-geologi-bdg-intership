@@ -12,6 +12,7 @@ import axios from "axios";
 import { FosilTable, SdgTabel } from ".";
 import { PencilSquareIcon, PrinterIcon, TrashIcon } from "@heroicons/react/24/solid";
 import Swal from 'sweetalert2';
+import { Document, Page } from 'react-pdf';
 
 export function Tables() {
   // * =======================================
@@ -47,7 +48,7 @@ export function Tables() {
 
         console.log(response);
       } catch (error) {
-        setError(err.message);
+        setError(error.message);
         Swal.fire({
           icon: 'error',
           title: 'Oops...',
@@ -139,8 +140,15 @@ export function Tables() {
               <tbody>
 
                 {data &&
-                  data.map((item) => (
-                    <tr className="border-b border-blue-gray-50 py-3 px-5 text-left" key={item}>{item.id.toUpperCase()}
+                  data.map((item, index) => (
+                    <tr className="border-b border-blue-gray-50 py-3 px-5 text-left" key={item}>
+                      <td className="border-b border-blue-gray-50 py-3 px-5 text-left">
+                        <Typography
+                          variant="3"
+                        >
+                          {index + 1}
+                        </Typography>
+                      </td>
                       <td className="border-b border-blue-gray-50 py-3 px-5 text-left">
                         <Typography
                           variant="3"
@@ -166,10 +174,10 @@ export function Tables() {
                         {item.keterangan}
                       </td>
                       <td className="border-b border-blue-gray-50 py-3 px-5 text-left">
-                        <Button className="flex gap-2"><PrinterIcon className="w-5" /> Cetak</Button>
+                        <Button className="flex gap-2" onClick={() => window.print()}><PrinterIcon className="w-5" /> Cetak</Button>
                       </td>
                       <td className="border-b border-blue-gray-50 py-3 px-5 text-left">
-                      <a href={`batuan_edit/${item.id}`}><Button className="flex gap-2 bg-blue-gray-900" ><PencilSquareIcon className="w-5" />Edit</Button></a>
+                        <a href={`batuan_edit/${item.id}`}><Button className="flex gap-2 bg-blue-gray-900" ><PencilSquareIcon className="w-5" />Edit</Button></a>
                       </td>
                       <td className="border-b border-blue-gray-50 py-3 px-5 text-left">
                         <Button className="flex gap-2 bg-red-900" onClick={() => handleDelete(item.id)}><TrashIcon className="w-5" value={id} onChange={e => setId(e.target.value)} />Delete</Button>

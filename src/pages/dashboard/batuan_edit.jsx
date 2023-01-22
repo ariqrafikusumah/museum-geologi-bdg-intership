@@ -14,6 +14,7 @@ import {
 } from "@material-tailwind/react";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { useParams } from "react-router-dom";
 
 export function Batuanedit() {
     const url = "https://sbc-sebatcabut.herokuapp.com";
@@ -30,7 +31,7 @@ export function Batuanedit() {
         sub_jenis_koleksi: "-",
         kode_jenis_koleksi: "BSE",
         ruang_simpan: "Gudang 3",
-        lokasi_simpan: "31070101",
+        lokasi_simpan: "31070102",
         kondisi: "B/Baik",
         nama_koleksi: "Batugamping",
         keterangan: "Batuan Sedimen (Klastik)",
@@ -55,6 +56,7 @@ export function Batuanedit() {
     });
 
     const [errors, setErrors] = useState({});
+    const {id} = useParams();
 
     const handleChange = event => {
         setFormData({ ...formData, [event.target.name]: event.target.value });
@@ -68,13 +70,22 @@ export function Batuanedit() {
         return newErrors;
     }
 
-    const handleSubmit = event => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
         const newErrors = validate();
+        const result = await Swal.fire({
+            title: 'Are you sure?',
+            text: "You want to post this data?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, post it!'
+        });
         if (Object.keys(newErrors).length > 0) {
             setErrors(newErrors);
-        } else {
-            axios.patch(url + `/batuan`, formData)
+        } else (result); {
+            await axios.put(url + `/batuan/${id}`, formData)
                 .then(res => {
                     // Show success message
                     Swal.fire(
@@ -90,7 +101,7 @@ export function Batuanedit() {
                         icon: 'error',
                         title: 'Oops...',
                         text: 'Something went wrong!',
-                        footer: '<a href>Why do I have this issue?</a>'
+                        footer: '<a href>Why do I have this issue?</a>',
                     })
                     console.log(error);
                 });
@@ -105,7 +116,7 @@ export function Batuanedit() {
                         shadow={false}
                         className="lg:w-1/3 w-full">
                         <Typography className="" variant="h3">
-                            Batuan Edit
+                            Batuan - Edit
                         </Typography>
                     </CardHeader>
                     <CardBody>
@@ -842,6 +853,7 @@ export function Batuanedit() {
                             <Button
                                 variant="outlined"
                                 color="red"
+                                type="reset"
                             >
                                 Reset
                             </Button>

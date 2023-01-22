@@ -127,8 +127,11 @@ export function FosilTable() {
                             <tbody>
 
                                 {data &&
-                                    data.map((item) => (
-                                        <tr className="border-b border-blue-gray-50 py-3 px-5 text-left" key={item}>{item.id.toUpperCase()}
+                                    data.map((item, index) => (
+                                        <tr className="border-b border-blue-gray-50 py-3 px-5 text-left" key={item}>
+                                            <td className="border-b border-blue-gray-50 py-3 px-5 text-left">
+                                                {index + 1}
+                                            </td>
                                             <td className="border-b border-blue-gray-50 py-3 px-5 text-left">
                                                 {item.no_register}
                                             </td>

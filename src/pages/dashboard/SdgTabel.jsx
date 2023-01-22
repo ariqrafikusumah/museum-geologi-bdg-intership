@@ -134,8 +134,15 @@ export function SdgTabel() {
                             <tbody>
 
                                 {data &&
-                                    data.map((item) => (
-                                        <tr className="border-b border-blue-gray-50 py-3 px-5 text-left" key={item}>{item.id.toUpperCase()}
+                                    data.map((item, index) => (
+                                        <tr className="border-b border-blue-gray-50 py-3 px-5 text-left" key={item}>
+                                            <td className="border-b border-blue-gray-50 py-3 px-5 text-left">
+                                                <Typography
+                                                    variant="3"
+                                                >
+                                                    {index + 1}
+                                                </Typography>
+                                            </td>
                                             <td className="border-b border-blue-gray-50 py-3 px-5 text-left">
                                                 <Typography
                                                     variant="3"

@@ -14,13 +14,14 @@ import {
 } from "@material-tailwind/react";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { useParams } from "react-router-dom";
 
 export function Fosiledit() {
     const url = "https://sbc-sebatcabut.herokuapp.com";
     const [formData, setFormData] = useState({
         id: null,
         no_register: "MGB-00000003",
-        no_inventaris: "FIM00000003",
+        no_inventaris: "FIM00000004",
         nama_koleksi: "Trigonostoma (Scalptia) atjehense Oostingh",
         lokasi_temuan: "Lok.365, Peusangan, Atjeh",
         tahun_perolehan: "1938",
@@ -29,6 +30,7 @@ export function Fosiledit() {
     });
 
     const [errors, setErrors] = useState({});
+    const { id } = useParams();
 
     const handleChange = event => {
         setFormData({ ...formData, [event.target.name]: event.target.value });
@@ -42,11 +44,11 @@ export function Fosiledit() {
         return newErrors;
     }
 
-    const handleSubmit = event => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
         const newErrors = validate();
         // Show SweetAlert2 confirm dialog
-        const result = Swal.fire({
+        const result = await Swal.fire({
             title: 'Are you sure?',
             text: "You want to post this data?",
             icon: 'warning',
@@ -55,10 +57,10 @@ export function Fosiledit() {
             cancelButtonColor: '#d33',
             confirmButtonText: 'Yes, post it!'
         });
-        if (Object.keys(newErrors).length > 0) {
+        if (result.value, Object.keys(newErrors).length > 0) {
             setErrors(newErrors);
         } else (result); {
-            axios.post(url + '/fosil', formData)
+            await axios.put(url + `/fosil/${id}`, formData)
                 .then(res => {
                     // Show success message
                     Swal.fire(

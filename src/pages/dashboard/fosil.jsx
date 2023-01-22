@@ -42,11 +42,11 @@ export function Fosil() {
         return newErrors;
     }
 
-    const handleSubmit = event => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
         const newErrors = validate();
         // Show SweetAlert2 confirm dialog
-        const result = Swal.fire({
+        const result = await Swal.fire({
             title: 'Are you sure?',
             text: "You want to post this data?",
             icon: 'warning',
@@ -114,7 +114,7 @@ export function Fosil() {
                                 className="justify-start w-60 md:md-inset-0"
                                 variant="h6"
                             >
-                                no_register
+                                No Register
                             </Typography>
                             <div className="w-full">
                                 <Input
@@ -147,12 +147,12 @@ export function Fosil() {
                                 className="justify-start w-60 md:md-inset-0"
                                 variant="h6"
                             >
-                                no_inventaris
+                                No inventaris
                             </Typography>
                             <Input
                                 name="no_inventaris"
                                 onChange={handleChange}
-                                label="no_inventaris"
+                                label="No inventaris"
                             />
                         </div>
                     </CardBody>

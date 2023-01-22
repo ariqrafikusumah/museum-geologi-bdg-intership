@@ -14,13 +14,14 @@ import {
 } from "@material-tailwind/react";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { useParams } from "react-router-dom";
 
 export function Sdgedit() {
     const url = "https://sbc-sebatcabut.herokuapp.com";
     const [formData, setFormData] = useState({
         id: null,
         no_register: "MGB-00002938",
-        no_inventaris: "BSE00000001",
+        no_inventaris: "BSE00000002",
         kode_bmn: "6.06.01.05.005",
         nup_bmn: "0",
         merk_bmn: "Batuan",
@@ -56,6 +57,7 @@ export function Sdgedit() {
 
     const [errors, setErrors] = useState({});
     const [error, setError] = useState('');
+    const { id } = useParams();
 
     const handleChange = event => {
         setFormData({ ...formData, [event.target.name]: event.target.value });
@@ -69,11 +71,11 @@ export function Sdgedit() {
         return newErrors;
     }
 
-    const handleSubmit = event => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
         const newErrors = validate();
         // Show SweetAlert2 confirm dialog
-        const result = Swal.fire({
+        const result = await Swal.fire({
             title: 'Are you sure?',
             text: "You want to post this data?",
             icon: 'warning',
@@ -82,10 +84,10 @@ export function Sdgedit() {
             cancelButtonColor: '#d33',
             confirmButtonText: 'Yes, post it!'
         });
-        if (Object.keys(newErrors).length > 0) {
+        if (result.value, Object.keys(newErrors).length > 0) {
             setErrors(newErrors);
         } else (result); {
-            axios.post(url + '/sumberdayageologi', formData)
+            await axios.post(url + `/sumberdayageologi/${id}`, formData)
                 .then(res => {
                     // Show success message
                     Swal.fire(
