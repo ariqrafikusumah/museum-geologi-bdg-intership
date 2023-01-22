@@ -4,7 +4,7 @@ import react from "@vitejs/plugin-react";
 export default defineConfig({
   plugins: [react()],
   build: {
-    chunkSizeWarningLimit: 1600,
+    chunkSizeWarningLimit: 2600,
   },
   resolve: {
     alias: [{ find: "@", replacement: "/src" }],
