@@ -10,3 +10,4 @@ export * from "@/pages/dashboard/SdgTabel";
 export * from "@/pages/dashboard/batuan_edit";
 export * from "@/pages/dashboard/fosiledit";
 export * from "@/pages/dashboard/sdgedit";
+export * from "@/pages/dashboard/NotFound";
