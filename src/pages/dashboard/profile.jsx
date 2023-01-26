@@ -93,11 +93,11 @@ export function Profile() {
             </div>
             <ProfileInfoCard
               title="Profile Information"
-              description="Hi, I'm Alec Thompson, Decisions: If you can't decide, the answer is no. If two equally difficult paths, choose the one more painful in the short term (pain avoidance is creating an illusion of equality)."
+              description="Hi, I'm Museum Geologi Bandung, Decisions: If you can't decide, the answer is no. If two equally difficult paths, choose the one more painful in the short term (pain avoidance is creating an illusion of equality)."
               details={{
-                "first name": "Ariq Rafi Kusumah",
+                "first name": "Museum Geologi Bandung",
                 mobile: "(62) 812 8144 4295",
-                email: "ariqrafikusumah@gmail.com",
+                email: "museumgeologibandung@gmail.com",
                 location: "INA",
                 social: (
                   <div className="flex items-center gap-4">
