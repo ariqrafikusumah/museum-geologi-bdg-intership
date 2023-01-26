@@ -34,7 +34,7 @@ export function Profile() {
               />
               <div>
                 <Typography variant="h5" color="blue-gray" className="mb-1">
-                  Musuen Geologi Bandung
+                  Museum Geologi Bandung
                 </Typography>
                 <Typography
                   variant="small"
