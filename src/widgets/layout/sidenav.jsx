@@ -97,8 +97,8 @@ export function Sidenav({ brandImg, brandName, routes }) {
 }
 
 Sidenav.defaultProps = {
-  brandImg: "https://i.ibb.co/D7pKqPS/museum-geologi-bandung.jpg",
-  brandName: "Museum Geologi Bandung",
+  brandImg: "https://www.linkpicture.com/q/tabfavicon.png",
+  brandName: "Database Koleksi",
 };
 
 Sidenav.propTypes = {
