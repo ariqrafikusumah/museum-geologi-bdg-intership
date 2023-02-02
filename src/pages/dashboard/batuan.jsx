@@ -138,6 +138,7 @@ export function Batuan() {
                                     id="kode_bmn"
                                     value="6.06.01.05.005"
                                     onChange={handleChange}
+                                    disabled
                                 />
                                 {errors.nup_bmn && <p style={{ color: "red" }}>{errors.nup_bmn}</p>}
                             </div>
@@ -176,7 +177,9 @@ export function Batuan() {
                                 Tipe BMN
                             </Typography>
                             <Input
-                                name="no_register"
+                                id="tipe_bmn"
+                                name="merk_bmn"
+                                value="Batuan"
                                 onChange={handleChange}
                                 disabled
                             />

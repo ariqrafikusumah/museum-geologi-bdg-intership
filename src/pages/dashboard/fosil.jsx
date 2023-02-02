@@ -106,6 +106,7 @@ export function Fosil() {
                                     id="nup_bmn"
                                     value="6.06.01.06.001"
                                     onChange={handleChange}
+                                    disabled
                                 />
                                 {errors.nup_bmn && <p style={{ color: "red" }}>{errors.nup_bmn}</p>}
                             </div>
@@ -126,6 +127,7 @@ export function Fosil() {
                             <div className="w-full">
                                 <Input
                                     name="no_register"
+                                    label="No Register"
                                     onChange={handleChange}
                                 />
 
@@ -142,7 +144,12 @@ export function Fosil() {
                                 Tipe BMN
                             </Typography>
                             <Input
+                                value="Fosil"
+                                id="merk_BMN"
+                                name="merk_BMN"
                                 inChange={handleChange}
+                                disabled
+                                
                             />
                             {errors.nup_bmn && <p style={{ color: "red" }}>{errors.nup_bmn}</p>}
                         </div>

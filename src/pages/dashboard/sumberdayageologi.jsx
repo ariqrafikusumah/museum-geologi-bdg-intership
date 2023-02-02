@@ -133,6 +133,7 @@ export function Sumberdayageologi() {
                                     id="kode_bmn"
                                     value="6.02.02.99.999"
                                     onChange={handleChange}
+                                    disabled
                                 />
                                 {errors.nup_bmn && <p style={{ color: "red" }}>{errors.nup_bmn}</p>}
                             </div>
@@ -171,6 +172,7 @@ export function Sumberdayageologi() {
                                 Tipe BMN
                             </Typography>
                             <Input
+                                value="Sumber Daya Geologi"
                                 name="no_register"
                                 onChange={handleChange}
                                 disabled
