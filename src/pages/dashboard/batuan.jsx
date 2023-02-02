@@ -133,8 +133,6 @@ export function Batuan() {
                                 Kategori BMN *
                             </Typography>
                             <Select className="w-full shadow-lg" label="Pilih Kategori BMN" name="kode_bmn" onChange={handleChange} required>
-                                <Option value="6.02.02.99.999">6.02.02.99.999</Option>
-                                <Option value="6.06.01.06.001">6.06.01.06.001</Option>
                                 <Option value="6.06.01.05.005">6.06.01.05.005</Option>
                             </Select>
                         </div>

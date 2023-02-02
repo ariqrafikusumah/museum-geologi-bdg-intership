@@ -129,8 +129,6 @@ export function Sumberdayageologi() {
                             </Typography>
                             <Select className="w-full shadow-lg" label="Pilih Kategori BMN" name="kode_bmn" onChange={handleChange} required>
                                 <Option value="6.02.02.99.999">6.02.02.99.999</Option>
-                                <Option>6.06.01.05.005</Option>
-                                <Option>6.06.01.06.001</Option>
                             </Select>
                         </div>
                     </CardBody>
@@ -213,7 +211,7 @@ export function Sumberdayageologi() {
                                 Kelompok Koleksi
                             </Typography>
                             <Input
-                                label="Batuan"
+                                label="Sumber Daya Geologi"
                                 name="kelompok_koleksi"
                                 onChange={handleChange}
                                 disabled
