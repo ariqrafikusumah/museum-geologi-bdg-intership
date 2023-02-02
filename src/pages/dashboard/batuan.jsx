@@ -132,9 +132,18 @@ export function Batuan() {
                             >
                                 Kategori BMN *
                             </Typography>
-                            <Select className="w-full shadow-lg" label="Pilih Kategori BMN" name="kode_bmn" onChange={handleChange} required>
-                                <Option value="6.06.01.05.005">6.06.01.05.005</Option>
-                            </Select>
+                            <div className="w-full">
+                                <Input
+                                    name="kode_bmn"
+                                    id="kode_bmn"
+                                    value="6.06.01.05.005"
+                                    onChange={handleChange}
+                                />
+                                {errors.nup_bmn && <p style={{ color: "red" }}>{errors.nup_bmn}</p>}
+                            </div>
+                            {/* <Select className="w-full shadow-lg" label="Pilih Kategori BMN" name="kode_bmn" onChange={handleChange} required>
+                                <Option >6.06.01.05.005</Option>
+                            </Select> */}
                         </div>
                     </CardBody>
 

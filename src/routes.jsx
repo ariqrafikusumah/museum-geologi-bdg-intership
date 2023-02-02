@@ -33,7 +33,7 @@ export const routes = [
       },
       {
         icon: <TableCellsIcon {...icon} />,
-        name: "tables",
+        name: "Rekapitulasi Koleksi",
         path: "/tables",
         element: <Tables />,
       },

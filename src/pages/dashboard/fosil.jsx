@@ -100,9 +100,18 @@ export function Fosil() {
                             >
                                 Kategori BMN *
                             </Typography>
-                            <Select className="w-full shadow-lg" label="Pilih Kategori BMN" name="kode_bmn" onChange={handleChange} required>
+                            <div className="w-full">
+                                <Input
+                                    name="nup_bmn"
+                                    id="nup_bmn"
+                                    value="6.06.01.06.001"
+                                    onChange={handleChange}
+                                />
+                                {errors.nup_bmn && <p style={{ color: "red" }}>{errors.nup_bmn}</p>}
+                            </div>
+                            {/* <Select className="w-full shadow-lg" label="Pilih Kategori BMN" name="kode_bmn" onChange={handleChange} required>
                                 <Option value="6.06.01.06.001">6.06.01.06.001</Option>
-                            </Select>
+                            </Select> */}
                         </div>
                     </CardBody>
 

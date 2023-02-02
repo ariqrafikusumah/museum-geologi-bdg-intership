@@ -64,7 +64,7 @@ export function Profile() {
             </div> */}
           </div>
           <div className="gird-cols-1 mb-12 grid gap-12 px-4 lg:grid-cols-2 xl:grid-cols-3">
-            <div>
+            {/* <div>
               <Typography variant="h6" color="blue-gray" className="mb-3">
                 Platform Settings
               </Typography>
@@ -90,7 +90,7 @@ export function Profile() {
                   </div>
                 ))}
               </div>
-            </div>
+            </div> */}
             <ProfileInfoCard
               title="Profile Information"
               description="Hi, I'm Museum Geologi Bandung, Decisions: If you can't decide, the answer is no. If two equally difficult paths, choose the one more painful in the short term (pain avoidance is creating an illusion of equality)."
