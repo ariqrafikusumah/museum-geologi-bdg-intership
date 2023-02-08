@@ -272,7 +272,7 @@ export function Fosil() {
                                 Ruang Penyimpanan
                             </Typography>
                             <div className="grid grid-rows-1 grid-flow-col gap-4">
-                                <Radio id="dalamnegeri" name="ruang_simpan" label="Storage" onChange={handleChange} />
+                                <Radio id="storage" name="ruang_simpan" label="Storage" onChange={handleChange} />
                                 <Radio id="nonstorage" name="ruang_simpan" label="Non Storage" onChange={handleChange} />
                             </div>
                         </div>
